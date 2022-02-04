@@ -1,0 +1,26 @@
+.div2{
+    border-style:ridge;
+    border-color: chocolate;
+    border-width:7px;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 10%;
+    text-align: center;
+    padding: 7px;
+    
+}
+.q1{
+    color: rgb(232, 235, 240);
+    font-size: 22px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#id1{
+    color: rgb(180, 57, 57);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.d-flex{
+    margin-left: 900px;
+    margin-top: 1%;
+    color: white;
+
+}
