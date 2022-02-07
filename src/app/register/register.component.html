@@ -37,17 +37,20 @@
       </nav>
 
       <div class="formdiv">
-          <form>
+          <form [formGroup]="regform" (ngSubmit)='registerfun()'>
             <h4>USER REGISTRATION</h4>
             <label>User Id: </label><br>
-            <input type="text" class="form-control" placeholder="Enter 4 digit number as user id" [(ngModel)]="userid" name="userid"><br>
+            <input type="text" class="form-control" placeholder="Enter 4 digit number as user id" formControlName="userid" name="userid">
+            <div *ngIf="(regform.controls['userid'].touched||regform.controls['userid'].dirty) && (regform.controls['userid'].errors?.['required'])">
+              <p  class="err">Invalid USER Id!!</p>
+            </div>
             <label>User name</label><br>
-            <input type="text" class="form-control" placeholder="Enter user name" [(ngModel)]="name" name="name"><br>
+            <input type="text" class="form-control" placeholder="Enter user name" formControlName="name" name="name"><br>
             <label>Email</label><br>
-            <input type="text" class="form-control" placeholder="Enter email" [(ngModel)]="email" name="email"><br>
+            <input type="text" class="form-control" placeholder="Enter email" formControlName="email" name="email"><br>
             <label>Password: </label><br>
-            <input type="password" class="form-control" name="pswd" placeholder="Enter password" [(ngModel)]="pswd" name="pswd"><br><br>
-            <button class="btn btn-info text-light"(click)='registerfun()'>Register</button>&nbsp;&nbsp;
+            <input type="password" class="form-control" name="pswd" placeholder="Enter password" formControlName="pswd" name="pswd"><br><br>
+            <button type="submit" class="btn btn-info text-light">Register</button>&nbsp;&nbsp;
             <a href='login'>Login</a>
           </form>
     </div>

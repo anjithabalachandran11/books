@@ -31,5 +31,23 @@ export class UserdataService {
 
   }
 
+  login(userid:any,pswd:any){
+    let userDetails=this.user;
+    console.log(this.user)
+    if(userid in userDetails){
+      if(userDetails[userid].pswd==pswd){
+        return true
+      }
+      else{
+        alert("Invalid password!!");
+        return false
+      }
+    }
+    else{
+      alert("Invalid user id!!!");
+      return false;
+    }
+  }
+
 
 }

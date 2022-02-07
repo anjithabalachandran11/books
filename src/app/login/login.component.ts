@@ -16,24 +16,15 @@ export class LoginComponent implements OnInit {
   }
 
   loginfun(){
-    let userDetails=this.ud.user;
-    var id=this.userid;
+    var userid=this.userid;
     var pswd=this.pswd;
-    console.log(this.ud.user)
-    if(id in userDetails){
-      if(userDetails[id].pswd==pswd){
-        alert("Login success...");
-        this.router.navigateByUrl('details');
-      }
-      else{
-        alert("Invalid password!!");
-        this.router.navigateByUrl('login');
-      }
+    var result=this.ud.login(userid,pswd)
+    if(result){
+      alert("Login success...");
+      this.router.navigateByUrl('details');
     }
     else{
-      alert("Invalid user id!!!");
       this.router.navigateByUrl('login')
     }
   }
-
 }

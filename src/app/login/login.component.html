@@ -36,13 +36,13 @@
         </div>
       </nav>
       <div class="formdiv">
-            <form>
+            <form (ngSubmit)="loginfun()">
               <h4>USER LOGIN</h4>
               <label>User Id: </label><br>
               <input type="text" class="form-control" placeholder="Enter user id" [(ngModel)]="userid" name="userid"><br>
               <label>Password: </label><br>
               <input type="password" class="form-control" name="pswd" placeholder="Enter password" [(ngModel)]="pswd" name="pswd"><br><br>
-              <button class="btn btn-info text-light" (click)="loginfun()">Login</button>&nbsp;&nbsp;
+              <button class="btn btn-info text-light">Login</button>&nbsp;&nbsp;
               <a href='register'>Register</a>
             </form>
       </div>
