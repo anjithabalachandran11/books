@@ -36,13 +36,21 @@
         </div>
       </nav>
       <div class="formdiv">
-            <form (ngSubmit)="loginfun()">
+            <form [formGroup]="loginform" (ngSubmit)="loginfun()">
               <h4>USER LOGIN</h4>
               <label>User Id: </label><br>
-              <input type="text" class="form-control" placeholder="Enter user id" [(ngModel)]="userid" name="userid"><br>
+              <input type="text" class="form-control" placeholder="Enter user id" formControlName="userid" name="userid">
+              <div *ngIf="loginform.controls['userid'].touched">
+                <div *ngIf="loginform.controls['userid'].errors?.['required']"><p class="err">This field is required!!</p></div>
+                <div *ngIf="loginform.controls['userid'].errors?.['pattern']"><p class="err">Numbers required!!</p></div>
+                <div [hidden]="loginform.controls['userid'].errors?.['minLength']"><p class="err">Minimum length is 4!!</p></div>
+              </div>
               <label>Password: </label><br>
-              <input type="password" class="form-control" name="pswd" placeholder="Enter password" [(ngModel)]="pswd" name="pswd"><br><br>
-              <button class="btn btn-info text-light">Login</button>&nbsp;&nbsp;
+              <input type="password" class="form-control" name="pswd" placeholder="Enter password" formControlName="pswd" name="pswd">
+              <div *ngIf="loginform.controls['pswd'].errors?.['required']"><p class="err">This field is required!!</p></div>
+              <div *ngIf="loginform.controls['pswd'].errors?.['pattern']"><p class="err">Should contain a-z, A-Z, 0-9 and @ !!</p></div>
+              <br><br>
+              <button type="submit" class="btn btn-info text-light" [disabled]="!loginform.valid">Login</button>&nbsp;&nbsp;
               <a href='register'>Register</a>
             </form>
       </div>

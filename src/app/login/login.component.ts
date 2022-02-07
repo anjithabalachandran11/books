@@ -1,4 +1,6 @@
+import { variable } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserdataService } from '../service/userdata.service';
 
@@ -12,19 +14,30 @@ export class LoginComponent implements OnInit {
   constructor( private router:Router, private ud:UserdataService) { }
   userid : any
   pswd=""
+
+  loginform=new FormGroup({
+    userid: new FormControl('',Validators.compose([Validators.required,Validators.minLength(4),Validators.pattern('[0-9]*')])),
+    pswd: new FormControl('',Validators.compose([Validators.required,Validators.pattern("[a-zA-Z0-9@]*")])),
+  })
   ngOnInit(): void {
   }
 
   loginfun(){
-    var userid=this.userid;
-    var pswd=this.pswd;
+    var userid=this.loginform.value.userid;
+    var pswd=this.loginform.value.pswd;
     var result=this.ud.login(userid,pswd)
-    if(result){
-      alert("Login success...");
-      this.router.navigateByUrl('details');
+    console.log(userid,pswd)
+    if(this.loginform.valid){
+      if(result){
+        alert("Login success...");
+        this.router.navigateByUrl('details');
+      }
+      else{
+        this.router.navigateByUrl('login')
+      }
     }
     else{
-      this.router.navigateByUrl('login')
+      alert("Invalid inputs!!")
     }
   }
 }

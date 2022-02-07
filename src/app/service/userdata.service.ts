@@ -34,6 +34,7 @@ export class UserdataService {
   login(userid:any,pswd:any){
     let userDetails=this.user;
     console.log(this.user)
+    console.log(userid)
     if(userid in userDetails){
       if(userDetails[userid].pswd==pswd){
         return true

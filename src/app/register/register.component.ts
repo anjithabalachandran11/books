@@ -17,10 +17,10 @@ export class RegisterComponent implements OnInit {
   email=""
   pswd=""
   regform=new FormGroup({
-    userid:new FormControl('',Validators.compose([Validators.required,Validators.maxLength(4),Validators.pattern('[0-9]*')])),
+    userid:new FormControl('',Validators.compose([Validators.required,Validators.minLength(4),Validators.pattern('[0-9]*')])),
     name:new FormControl("",Validators.compose([Validators.required,Validators.pattern("[a-zA-Z]*")])),
     email:new FormControl("",Validators.compose([Validators.required,Validators.email])),
-    pswd:new FormControl("",Validators.compose([Validators.required,Validators.pattern("[a-zA-Z0-9]*")])),
+    pswd:new FormControl("",Validators.compose([Validators.required,Validators.pattern("[a-zA-Z0-9@]*")])),
 
   })
   ngOnInit(): void {
@@ -44,6 +44,7 @@ export class RegisterComponent implements OnInit {
     }
     else{
       alert("invalid form")
+      this.router.navigateByUrl('register')
     }
     
   }
