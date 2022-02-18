@@ -2,7 +2,6 @@
     margin-left: 900px;
     margin-top: 1%;
     color:white;
-
 }
 .formdiv{
     margin-left: 35%;
@@ -10,7 +9,8 @@
     text-align: center;
     margin-top: 10%;
     padding:8px;
-    background-color:lightblue;
+    background-color:rgb(105, 143, 247);
+    border-radius:10px;
 }
 h4{
     color:brown;
@@ -19,4 +19,6 @@ h4{
     color: red;
     font-style: italic;
 }
-
+.navbar{
+    background-color: rgb(169, 188, 218);
+}

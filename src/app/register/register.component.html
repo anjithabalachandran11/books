@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand text-light" href="#">My Library</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +39,7 @@
       <div class="formdiv">
           <form [formGroup]="regform" (ngSubmit)='registerfun()'>
             <h4>USER REGISTRATION</h4>
+
             <label>User Id: </label><br>
             <input type="text" class="form-control" placeholder="Enter 4 digit number as user id" formControlName="userid" name="userid">
             <div *ngIf="regform.controls['userid'].touched">
@@ -46,21 +47,33 @@
               <div *ngIf="regform.controls['userid'].errors?.['pattern']"><p class="err">Numbers required!!</p></div>
               <div [hidden]="regform.controls['userid'].errors?.['minLength']"><p class="err">Minimum length is 4!!</p></div>
             </div>
+
             <label>User name</label><br>
             <input type="text" class="form-control" placeholder="Enter user name" formControlName="name" name="name">
+            <div *ngIf="regform.controls['name'].touched">
               <div *ngIf="regform.controls['name'].errors?.['required']"><p class="err">This field is required!!</p></div>
               <div *ngIf="regform.controls['name'].errors?.['pattern']"><p class="err">Name should be alphabets!!</p></div>
+            </div>
+
             <label>Email</label><br>
             <input type="text" class="form-control" placeholder="Enter email" formControlName="email" name="email">
+            <div *ngIf="regform.controls['email'].touched">
               <div *ngIf="regform.controls['email'].errors?.['required']"><p class="err">This field is required!!</p></div>
               <div *ngIf="regform.controls['email'].errors?.['email']"><p class="err">Enter valid email id!!</p></div>
+            </div>
+
             <label>Password: </label><br>
             <input type="password" class="form-control" name="pswd" placeholder="Enter password" formControlName="pswd" name="pswd">
+            <div *ngIf="regform.controls['email'].touched">
               <div *ngIf="regform.controls['pswd'].errors?.['required']"><p class="err">This field is required!!</p></div>
               <div *ngIf="regform.controls['pswd'].errors?.['pattern']"><p class="err">Should contain a-z, A-Z, 0-9 and @ !!</p></div>
+            </div>
+
             <br><br>
-            <button type="submit" class="btn btn-info text-light" [disabled]="!regform.valid">Register</button>&nbsp;&nbsp;
+
+            <button type="submit" class="btn btn-primary text-light" [disabled]="!regform.valid">Register</button>&nbsp;&nbsp;
             <a href='login'>Login</a>
+
           </form>
     </div>
 </body>

@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+    <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
           <a class="navbar-brand text-light" href="#">My Library</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,9 @@
       </nav>
       <div class="formdiv">
             <form [formGroup]="loginform" (ngSubmit)="loginfun()">
+
               <h4>USER LOGIN</h4>
+
               <label>User Id: </label><br>
               <input type="text" class="form-control" placeholder="Enter user id" formControlName="userid" name="userid">
               <div *ngIf="loginform.controls['userid'].touched">
@@ -45,13 +47,19 @@
                 <div *ngIf="loginform.controls['userid'].errors?.['pattern']"><p class="err">Numbers required!!</p></div>
                 <div [hidden]="loginform.controls['userid'].errors?.['minLength']"><p class="err">Minimum length is 4!!</p></div>
               </div>
+
               <label>Password: </label><br>
               <input type="password" class="form-control" name="pswd" placeholder="Enter password" formControlName="pswd" name="pswd">
-              <div *ngIf="loginform.controls['pswd'].errors?.['required']"><p class="err">This field is required!!</p></div>
-              <div *ngIf="loginform.controls['pswd'].errors?.['pattern']"><p class="err">Should contain a-z, A-Z, 0-9 and @ !!</p></div>
+              <div *ngIf="loginform.controls['pswd'].touched">
+                <div *ngIf="loginform.controls['pswd'].errors?.['required']"><p class="err">This field is required!!</p></div>
+                <div *ngIf="loginform.controls['pswd'].errors?.['pattern']"><p class="err">Should contain a-z, A-Z, 0-9 and @ !!</p></div>
+              </div>
+
               <br><br>
+
               <button type="submit" class="btn btn-info text-light" [disabled]="!loginform.valid">Login</button>&nbsp;&nbsp;
               <a href='register'>Register</a>
+              
             </form>
       </div>
 </body>

@@ -4,3 +4,30 @@
     color: white;
 
 }
+.navbar{
+    background-color: rgb(169, 188, 218);
+}
+.divtable{
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-top: 10%;
+    padding:8px;
+    background-color:rgb(228, 231, 240);
+    border-radius:10px;
+}
+table{
+    width: 100%;
+    border-style: solid;
+}
+
+tr:nth-child(even) {
+    background-color: #bac0ee;
+    border-style: solid;
+}
+tr:nth-child(odd) {
+    background-color: #c2dcee;
+}
+.a1{
+    margin-left: 35%;
+    margin-right: 35%;
+}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserdataService } from '../service/userdata.service';
 import { FormControl,FormGroup} from '@angular/forms';
@@ -11,7 +11,7 @@ import { FormControl,FormGroup} from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private router:Router, private ud:UserdataService, private fb:FormBuilder) { }
+  constructor(private router:Router, private ud:UserdataService) { }
   userid : any
   name=""
   email=""
@@ -46,8 +46,5 @@ export class RegisterComponent implements OnInit {
       alert("invalid form")
       this.router.navigateByUrl('register')
     }
-    
   }
-
-
 }

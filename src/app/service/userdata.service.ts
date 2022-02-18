@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserdataService {
-
-  constructor() { }
-
+  
+  constructor(private http: HttpClient ) {}
   user:any={
     1001:{userid:1001,name:'abc',email:'abc@gmail.com',pswd:'abc@'},
     1002:{userid:1002,name:'def',email:'def@gmail.com',pswd:'def@'},
@@ -28,7 +28,6 @@ export class UserdataService {
       }
       return true;
     }
-
   }
 
   login(userid:any,pswd:any){
@@ -50,5 +49,24 @@ export class UserdataService {
     }
   }
 
+  getDetails(){
+    let url='https://jsonplaceholder.typicode.com/posts';
+    return this.http.get(url)
+  }
 
-}
+  // getDetails() {
+  //   return this.http.get('https://jsonplaceholder.typicode.com/users');
+  // }
+  
+
+
+
+
+  /**
+   * Api to retreve employee report based on email id
+   * @param data object
+   */
+//     getEmployeeCOReport(data: any) {
+//       return this.http.post(${environment.apiUrl}/leave/compoff/report, data, {responseType: 'json'});
+// }
+ }
